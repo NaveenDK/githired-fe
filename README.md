@@ -28,7 +28,7 @@ We love contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for 
 Sprint 1 - In Progress
 
 ## Issues
-Check our [Issues](https://github.com/naveendk/githired/issues) page to find tasks you can help with.
+Check our [Issues](https://github.com/naveendk/githired/issues) page to find tasks you can help with or create a new one based on the JIRA board
 
 # Contributing to GitHired
 
@@ -46,8 +46,6 @@ Check our [Issues](https://github.com/naveendk/githired/issues) page to find tas
 - `enhancement`: New features or improvements
 - `help wanted`: Extra attention needed
 
-4.Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
-
 ## Tech Stack
 
 - [Next.js 14](https://nextjs.org/)
@@ -55,4 +53,6 @@ Check our [Issues](https://github.com/naveendk/githired/issues) page to find tas
 - [Tailwind CSS](https://tailwindcss.com/)
 - [ESLint](https://eslint.org/)
 
-## Project Structure
+## License
+
+This project is licensed under the MIT License 
