@@ -14,7 +14,7 @@ Before you begin, ensure you have the following installed:
 
 ## Getting Started
 
-1. Clone the repository: git clone https://github.com/yourusername/githired.git  --> cd githired
+1. Clone the repository: git clone https://github.com/naveendk/githired.git  --> cd githired
 
 2. Install dependencies: npm install
 
