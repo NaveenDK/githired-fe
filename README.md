@@ -2,6 +2,8 @@
 
 A modern job board platform for developers built with Next.js and Tailwind CSS.
 
+![GitHired Screenshot](/public/images/UI-Githired.png)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
