@@ -16,6 +16,10 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository: git clone https://github.com/naveendk/githired.git  --> cd githired
 
+2. Install `nvm`: [Doc](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script)
+
+3. Install the required Node.js version: `nvm install`
+
 2. Install dependencies: npm install
 
 3. Start the development server: npm run dev
