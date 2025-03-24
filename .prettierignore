@@ -1,0 +1,14 @@
+# Next.js build output
+.next
+out
+
+# Node modules
+node_modules
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Other
+.git
+public
