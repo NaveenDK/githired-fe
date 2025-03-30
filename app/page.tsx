@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetJobsQuery } from './store/reducers/authSlice';
+import { useGetJobsQuery } from './store/reducers/jobsApi';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import TopLoader from 'nextjs-toploader'; // Import TopLoader for the loader bar
@@ -72,7 +72,7 @@ export default function Home() {
       {/* Featured Jobs Section */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Jobs</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Featured Jobs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Loading and error handling */}
             {isLoading && <p className="text-center">Loading jobs...</p>}
