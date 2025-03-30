@@ -11,9 +11,12 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "next": "15.2.1",
+    "nextjs-toploader": "^3.7.15",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -23,10 +26,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
     "eslint-config-prettier": "^10.1.1",
     "prettier": "^3.5.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
   },
   "engines": {
     "node": ">=18.17.0"

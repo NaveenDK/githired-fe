@@ -1,8 +1,42 @@
+"use client";
+
+import { useGetJobsQuery } from './store/reducers/authSlice';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import TopLoader from 'nextjs-toploader'; // Import TopLoader for the loader bar
 
 export default function Home() {
+  const { data: jobs, error, isLoading } = useGetJobsQuery(undefined);
+  const [visibleJobs, setVisibleJobs] = useState<any[]>([]); 
+  const [loading, setLoading] = useState(false); 
+  const [page, setPage] = useState(1); 
+
+  
+  const loadMoreJobs = () => {
+    setLoading(true);
+    setTimeout(() => {
+      const nextJobs = jobs?.jobs.slice(page * 6, (page + 1) * 6) || [];
+      setVisibleJobs((prev) => [...prev, ...nextJobs]); 
+      setPage((prev) => prev + 1); 
+      setLoading(false);
+    }, 1000); 
+  };
+
+ 
+  useEffect(() => {
+    if (jobs) {
+      setVisibleJobs(jobs.jobs.slice(0, 6)); 
+    }
+  }, [jobs]);
+
+  if (isLoading) return <p>Loading...</p>;
+ 
+
   return (
     <main className="flex min-h-screen flex-col">
+      {/* Top Loader */}
+      <TopLoader show={isLoading || loading} /> {/* Show loader when data is being fetched */}
+
       {/* Hero Section */}
       <section className="pt-24 pb-12 sm:pt-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,35 +74,69 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Jobs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Example Job Cards */}
-            {[1, 2, 3].map((i) => (
+            {/* Loading and error handling */}
+            {isLoading && <p className="text-center">Loading jobs...</p>}
+
+            {/* Dynamically render job cards */}
+            {visibleJobs?.map((job) => (
               <div
-                key={i}
+                key={job.id}
                 className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
+                {/* Company Info and Logo */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-gray-200 rounded-lg"></div>
+                  <img
+                    src={job.company_logo}
+                    alt={job.company_name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
                   <span className="text-sm text-purple-600 font-medium">New</span>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Senior Frontend Developer
-                </h3>
-                <p className="text-gray-600 mb-4">TechCorp Inc.</p>
+
+                {/* Job Title and Company Name */}
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{job.title}</h3>
+                <p className="text-gray-600 mb-4">{job.company_name}</p>
+
+                {/* Categories */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">
-                    React
-                  </span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">
-                    TypeScript
+                  <span className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium border border-purple-300">
+                    {job.category}
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>Remote</span>
-                  <span>$120k - $150k</span>
+
+                {/* Job Location, Type, and Salary */}
+                <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                  <span>{job.candidate_required_location}</span>
+                  <span className="font-semibold">{job.job_type}</span>
+                  <span className="font-semibold">{job.salary}</span>
                 </div>
+
+                {/* Apply Link */}
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 hover:text-purple-700 font-medium"
+                >
+                  Apply Now
+                </a>
               </div>
             ))}
           </div>
+
+          {/* Load More Button */}
+          {jobs && jobs.jobs.length > visibleJobs.length && (
+            <div className="text-center mt-8">
+              <button
+                onClick={loadMoreJobs}
+                className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                disabled={loading}
+              >
+                {loading ? 'Loading...' : 'Load More Jobs'}
+              </button>
+            </div>
+          )}
+
           <div className="text-center mt-8">
             <Link
               href="/jobs"
@@ -87,7 +155,7 @@ export default function Home() {
             How GitHired Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {[ 
               {
                 title: 'Create Profile',
                 description: 'Sign up and create your developer profile with your skills and experience.',
@@ -129,4 +197,4 @@ export default function Home() {
       </section>
     </main>
   );
-} 
+}
