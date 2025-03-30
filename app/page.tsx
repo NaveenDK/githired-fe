@@ -139,7 +139,7 @@ export default function Home() {
 
           <div className="text-center mt-8">
             <Link
-              href="/jobs"
+              href="/search"
               className="text-purple-600 font-medium hover:text-purple-700"
             >
               View all jobs →

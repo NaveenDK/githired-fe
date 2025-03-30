@@ -19,7 +19,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/jobs" className="text-gray-600 hover:text-gray-900">
+            <Link href="/search" className="text-gray-600 hover:text-gray-900">
               Find Jobs
             </Link>
             <Link
