@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHired
+
+A modern job board platform for developers built with Next.js and Tailwind CSS.
+
+![GitHired Screenshot](/public/images/UI-Githired.png)
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (version 18 or higher)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+- [Git](https://git-scm.com/)
+
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository: git clone https://github.com/naveendk/githired.git  --> cd githired
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install `nvm`: [Doc](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install the required Node.js version: `nvm install`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install dependencies: npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Start the development server: npm run dev
 
-## Learn More
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
+We love contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Status
+Sprint 1 - In Progress
 
-## Deploy on Vercel
+## Issues
+Check our [Issues](https://github.com/naveendk/githired/issues) page to find tasks you can help with or create a new one based on the JIRA board
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Contributing to GitHired
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## How to Contribute
+1. Find an issue to work on or create a new one based on the JIRA board
+2. Comment on the issue to let others know you're working on it
+3. Fork the repository
+4. Create a branch: `git checkout -b feature/your-feature-name`
+5. Make your changes
+6. Submit a Pull Request
+
+## Issue Labels
+- `good first issue`: Perfect for newcomers
+- `bug`: Something isn't working
+- `enhancement`: New features or improvements
+- `help wanted`: Extra attention needed
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ESLint](https://eslint.org/)
+
+## License
+
+This project is licensed under the MIT License 

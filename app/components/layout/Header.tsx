@@ -22,17 +22,20 @@ export default function Header() {
             <Link href="/jobs" className="text-gray-600 hover:text-gray-900">
               Find Jobs
             </Link>
-            <Link href="/companies" className="text-gray-600 hover:text-gray-900">
+            <Link
+              href="/companies"
+              className="text-gray-600 hover:text-gray-900"
+            >
               Companies
             </Link>
             <Link href="/login" className="text-gray-600 hover:text-gray-900">
-              Sign In
+              Sign in
             </Link>
             <Link
-              href="/register"
+              href="/signup"
               className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
             >
-              Post a Job
+              Sign up
             </Link>
           </div>
 
@@ -95,4 +98,4 @@ export default function Header() {
       </nav>
     </header>
   );
-} 
+}
