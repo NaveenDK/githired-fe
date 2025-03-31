@@ -5,6 +5,7 @@ import JobCard from './JobCard';
 import SearchOptions from './SearchOptions';
 import Pagination from '../components/Pagination';
 import { useState, useEffect } from 'react';
+import { Job } from '../store/types/jobs';
 
 const JOBS_PER_PAGE = 10;
 
@@ -13,7 +14,7 @@ export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredJobs, setFilteredJobs] = useState<any[]>([]);
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   
   // Filter jobs based on search term and category

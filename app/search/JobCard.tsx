@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Job } from '../store/types/jobs';
+import Image from 'next/image';
 
 interface JobCardProps {
   job: Job;
@@ -13,12 +14,21 @@ export default function JobCard({ job }: JobCardProps) {
     <Link href={`/job/${job.id}`}>
       <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
         <div className="flex items-center mb-3">
-          {job.company_logo && (
-            <img 
-              src={job.company_logo} 
-              alt={`${job.company_name} logo`} 
-              className="w-10 h-10 object-contain mr-3"
-            />
+          {job.company_logo ? (
+            <div className="w-10 h-10 relative mr-3">
+              <Image 
+                src={job.company_logo} 
+                alt={`${job.company_name} logo`}
+                fill
+                className="object-contain"
+              />
+            </div>
+          ) : (
+            <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+              <span className="text-gray-500 text-xs font-bold">
+                {job.company_name.substring(0, 2).toUpperCase()}
+              </span>
+            </div>
           )}
           <div>
             <h3 className="font-bold text-lg">{job.title}</h3>

@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useGetJobByIdQuery } from '@/app/store/reducers/jobsApi';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function JobDetailsPage() {
   const { id } = useParams();
@@ -54,7 +55,7 @@ export default function JobDetailsPage() {
       <div className="container mx-auto p-4">
         <div className="bg-white shadow-md rounded-lg p-6">
           <h1 className="text-xl font-bold text-amber-500">Job Not Found</h1>
-          <p className="mb-4">We couldn't find the job with ID: {id}</p>
+          <p className="mb-4">We couldn&apos;t find the job with ID: {id}</p>
           <Link href="/search" className="text-blue-500 hover:underline">
             Back to job search
           </Link>
@@ -72,11 +73,15 @@ export default function JobDetailsPage() {
       <div className="bg-white shadow-md rounded-lg p-6">
         <div className="flex items-center mb-4">
           {job.company_logo && (
-            <img 
-              src={job.company_logo} 
-              alt={`${job.company_name} logo`} 
-              className="w-16 h-16 object-contain mr-4"
-            />
+            <div className="w-16 h-16 relative mr-4">
+              <Image 
+                src={job.company_logo} 
+                alt={`${job.company_name} logo`}
+                fill
+                className="object-contain"
+                unoptimized
+              />
+            </div>
           )}
           <div>
             <h1 className="text-2xl font-bold">{job.title}</h1>

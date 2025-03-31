@@ -4,9 +4,10 @@ import { useGetJobsQuery } from './store/reducers/jobsApi';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import TopLoader from 'nextjs-toploader'; // Import TopLoader for the loader bar
+import Image from 'next/image';
 
 export default function Home() {
-  const { data: jobs, error, isLoading } = useGetJobsQuery(undefined);
+  const { data: jobs, isLoading } = useGetJobsQuery(undefined);
   const [visibleJobs, setVisibleJobs] = useState<any[]>([]); 
   const [loading, setLoading] = useState(false); 
   const [page, setPage] = useState(1); 
@@ -58,9 +59,11 @@ export default function Home() {
                 placeholder="Search jobs, skills, or companies"
                 className="px-6 py-3 rounded-lg border border-gray-300 w-full sm:w-96 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <button className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                Search Jobs
-              </button>
+              <Link href="/search">
+                <button className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                  Search Jobs
+                </button>
+              </Link>
             </div>
             <p className="text-sm text-gray-500">
               Popular: React, Python, JavaScript, Full Stack, Remote
@@ -79,17 +82,29 @@ export default function Home() {
 
             {/* Dynamically render job cards */}
             {visibleJobs?.map((job) => (
-              <div
+              <Link 
+                href={`/job/${job.id}`} 
                 key={job.id}
-                className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                className="block bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
                 {/* Company Info and Logo */}
                 <div className="flex items-center justify-between mb-4">
-                  <img
-                    src={job.company_logo}
-                    alt={job.company_name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
+                  {job.company_logo ? (
+                    <Image
+                      src={job.company_logo}
+                      alt={job.company_name}
+                      width={48}
+                      height={48}
+                      className="rounded-full object-cover"
+                      unoptimized
+                    />
+                  ) : (
+                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-gray-500 text-sm font-bold">
+                        {job.company_name.substring(0, 2).toUpperCase()}
+                      </span>
+                    </div>
+                  )}
                   <span className="text-sm text-purple-600 font-medium">New</span>
                 </div>
 
@@ -111,16 +126,11 @@ export default function Home() {
                   <span className="font-semibold">{job.salary}</span>
                 </div>
 
-                {/* Apply Link */}
-                <a
-                  href={job.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-600 hover:text-purple-700 font-medium"
-                >
-                  Apply Now
-                </a>
-              </div>
+                {/* View Details Button */}
+                <div className="text-purple-600 hover:text-purple-700 font-medium">
+                  View Job Details
+                </div>
+              </Link>
             ))}
           </div>
 
@@ -190,9 +200,11 @@ export default function Home() {
           <p className="text-purple-100 mb-8">
             Join thousands of developers who have found their dream jobs through GitHired
           </p>
-          <button className="px-8 py-3 bg-white text-purple-600 rounded-lg hover:bg-gray-100 transition-colors">
-            Get Started
-          </button>
+          <Link href="/search">
+            <button className="px-8 py-3 bg-white text-purple-600 rounded-lg hover:bg-gray-100 transition-colors">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
     </main>

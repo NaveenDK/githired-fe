@@ -22,12 +22,7 @@ export default function Header() {
             <Link href="/search" className="text-gray-600 hover:text-gray-900">
               Find Jobs
             </Link>
-            <Link
-              href="/companies"
-              className="text-gray-600 hover:text-gray-900"
-            >
-              Companies
-            </Link>
+        
             <Link href="/login" className="text-gray-600 hover:text-gray-900">
               Sign in
             </Link>
