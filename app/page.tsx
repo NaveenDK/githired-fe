@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* Top Loader */}
-      <TopLoader show={isLoading || loading} /> {/* Show loader when data is being fetched */}
+      <TopLoader  /> {/* Show loader when data is being fetched */}
 
       {/* Hero Section */}
       <section className="pt-24 pb-12 sm:pt-32 relative">
