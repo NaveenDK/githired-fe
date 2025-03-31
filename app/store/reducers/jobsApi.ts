@@ -21,10 +21,11 @@ export const jobsApi = createApi({
         console.log('Number of jobs:', response.jobs.length);
         
         // Make sure we're comparing the same type (string vs number)
-        const jobId = typeof id === 'string' ? id : id.toString();
+        const jobId = String(id); // Convert to string using String() constructor
         
         const job = response.jobs.find(job => {
-          const currentJobId = typeof job.id === 'string' ? job.id : job.id.toString();
+          // Also use String() here to ensure consistent conversion
+          const currentJobId = String(job.id);
           return currentJobId === jobId;
         });
         
