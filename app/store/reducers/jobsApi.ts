@@ -16,7 +16,7 @@ export const jobsApi = createApi({
       query: () => 'remote-jobs',
       // Since the API doesn't have a direct endpoint for a single job,
       // we'll fetch all jobs and filter for the one we want
-      transformResponse: (response: {jobs: Job[]}, _, id) => {
+      transformResponse: (response: {jobs: Job[]}, _, id: string | number) => {
         console.log('Searching for job with ID:', id);
         console.log('Number of jobs:', response.jobs.length);
         
